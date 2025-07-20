@@ -120,7 +120,7 @@ class StaticMapAction extends BulkAction
                 //					]
                 //				);
 
-                return redirect()->to('/cheesegrits/filament-google-maps/' . $cacheKey . '.png');
+                return redirect()->to('/maukoese/filament-google-maps/' . $cacheKey . '.png');
             });
 
             $this->success();

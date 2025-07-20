@@ -32,7 +32,6 @@ class CustomerTable extends Component implements HasForms, HasTable
         return [
             //			Tables\Filters\TernaryFilter::make('processed'),
             RadiusFilter::make('radius')
-                ->relationship('location', 'name')
                 ->attribute('location.name')
                 ->selectUnit(),
         ];

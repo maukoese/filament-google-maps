@@ -11,17 +11,17 @@ use Filament\Forms\Components\Concerns\HasAffixes;
 use Filament\Forms\Components\Concerns\HasExtraInputAttributes;
 use Filament\Forms\Components\Concerns\HasInputMode;
 use Filament\Forms\Components\Concerns\HasPlaceholder;
-use Filament\Actions\Action;
 use Cheesegrits\FilamentGoogleMaps\Helpers\FieldHelper;
 use Cheesegrits\FilamentGoogleMaps\Helpers\MapsHelper;
 use Closure;
 use Exception;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Concerns;
 use Filament\Forms\Components\Contracts;
 use Filament\Forms\Components\Field;
 use Filament\Support\Concerns\HasExtraAlpineAttributes;
 
-class Geocomplete extends Field implements CanBeLengthConstrained, HasAffixActions
+class Geocomplete extends Field implements Contracts\CanBeLengthConstrained
 {
     use CanBeAutocapitalized;
     use CanBeAutocompleted;
