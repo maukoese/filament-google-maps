@@ -158,7 +158,7 @@ export default function filamentGoogleMapsField({
         ...controls,
       });
 
-      this.marker = new google.maps.Marker({
+      this.marker = new google.maps.marker.AdvancedMarkerElement({
         draggable: draggable,
         map: this.map,
       });
@@ -575,7 +575,7 @@ export default function filamentGoogleMapsField({
       var instance = null;
       switch (feature.properties.type) {
         case google.maps.drawing.OverlayType.MARKER:
-          instance = new google.maps.Marker({
+          instance = new google.maps.marker.AdvancedMarkerElement({
             id: feature.properties.id,
             type: feature.properties.type,
             position: new google.maps.LatLng(
