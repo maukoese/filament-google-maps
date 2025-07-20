@@ -38,8 +38,8 @@
         <div
             class="w-full"
             x-ignore
-            ax-load
-            ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-google-maps-geocomplete', 'maukoese/filament-google-maps') }}"
+            x-load
+            x-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-google-maps-geocomplete', 'maukoese/filament-google-maps') }}"
             x-data="filamentGoogleGeocomplete({
                         setStateUsing: async (path, state) => {
                             return await $wire.set(path, state)

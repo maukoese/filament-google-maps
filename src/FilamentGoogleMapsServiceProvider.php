@@ -59,21 +59,18 @@ class FilamentGoogleMapsServiceProvider extends PackageServiceProvider
         return array_merge($commands, $aliases);
     }
 
-    public function packageBooted(): void
+    public function packageRegistered()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/filament-google-maps.php', 'filament-google-maps');
+    }
 
-        FilamentAsset::register(
-            [
-                AlpineComponent::make('filament-google-maps-geocomplete', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-geocomplete.js'),
-                AlpineComponent::make('filament-google-maps-field', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-maps.js'),
-                AlpineComponent::make('filament-google-maps-widget', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-maps-widget.js'),
-                AlpineComponent::make('filament-google-maps-entry', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-maps-entry.js'),
-                //                Js::make('filament-google-maps-field', __DIR__.'/../dist/maukoese/filament-google-maps/filament-google-maps.js'),
-                //                Js::make('filament-google-maps-geocomplete', __DIR__.'/../dist/maukoese/filament-google-maps/filament-google-geocomplete.js'),
-                //                Js::make('filament-google-maps-widget', __DIR__.'/../dist/maukoese/filament-google-maps/filament-google-maps-widget.js'),
-            ],
-            'maukoese/filament-google-maps'
-        );
+    public function packageBooted(): void
+    {
+        FilamentAsset::register([
+            AlpineComponent::make('filament-google-maps-geocomplete', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-geocomplete.js'),
+            AlpineComponent::make('filament-google-maps-field', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-maps.js'),
+            AlpineComponent::make('filament-google-maps-widget', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-maps-widget.js'),
+            AlpineComponent::make('filament-google-maps-entry', __DIR__ . '/../dist/maukoese/filament-google-maps/filament-google-maps-entry.js'),
+        ], 'maukoese/filament-google-maps');
     }
 }
