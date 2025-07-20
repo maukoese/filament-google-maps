@@ -261,7 +261,7 @@ class MapColumn extends Column
             return null;
         }
 
-        return url('/cheesegrits/filament-google-maps/' . $cacheKey . '.png');
+        return url('/maukoese/filament-google-maps/' . $cacheKey . '.png');
     }
 
     public function getState(): mixed

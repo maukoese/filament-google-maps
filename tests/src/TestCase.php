@@ -62,11 +62,4 @@ class TestCase extends BaseTestCase
         ]);
         $app['config']->set('realaddress.rate-limiter', 100);
     }
-
-    function convertNewlines($text)
-    {
-        $text = implode("\n", explode("\r\n", $text));
-
-        return $text;
-    }
 }

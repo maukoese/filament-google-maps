@@ -27,3 +27,10 @@ it('makes a widget with the artisan make-widget command', function () {
 
     expect(app_path('Filament/Widgets/') . 'LocationMap.php')->toBeFile();
 });
+
+function convertNewlines($text)
+{
+    $text = implode("\n", explode("\r\n", $text));
+
+    return $text;
+}

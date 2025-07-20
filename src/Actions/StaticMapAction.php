@@ -6,7 +6,7 @@ use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Helpers\MapsHelper;
 use Filament\Actions\Concerns\CanCustomizeProcess;
 use Filament\Forms;
-use Filament\Tables\Actions\BulkAction;
+use Filament\Actions\BulkAction;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Mastani\GoogleStaticMap\GoogleStaticMap;
@@ -117,7 +117,7 @@ class StaticMapAction extends BulkAction
                 //					]
                 //				);
 
-                return redirect()->to('/cheesegrits/filament-google-maps/' . $cacheKey . '.png');
+                return redirect()->to('/maukoese/filament-google-maps/' . $cacheKey . '.png');
             });
 
             $this->success();

@@ -216,57 +216,48 @@ export default function filamentGoogleGeocomplete({
       }
     },
     updateReverseGeocode: async function (place) {
-    if (this.hasReverseGeocode()) {
-      if (place.address_components) {
-        const replacements = this.getReplacements(place.address_components);
-        const updatePromises = [];
+      if (this.hasReverseGeocode()) {
+        if (place.address_components) {
+          //await setStateUsing(config.autocomplete, response.results[0].formatted_address);
+          const replacements = this.getReplacements(place.address_components);
 
-        // Collect all update promises
-        for (const field in reverseGeocodeFields) {
-          let replaced = reverseGeocodeFields[field];
+          for (const field in reverseGeocodeFields) {
+            let replaced = reverseGeocodeFields[field];
 
-          for (const replacement in replacements) {
-            replaced = replaced
-              .split(replacement)
-              .join(replacements[replacement]);
+            for (const replacement in replacements) {
+              replaced = replaced
+                .split(replacement)
+                .join(replacements[replacement]);
+            }
+
+            for (const symbol in this.symbols) {
+              replaced = replaced.split(symbol).join("");
+            }
+
+            replaced = replaced.trim();
+            await setStateUsing(field, replaced);
           }
-
-          for (const symbol in this.symbols) {
-            replaced = replaced.split(symbol).join("");
-          }
-
-          replaced = replaced.trim();
-          updatePromises.push(setStateUsing(field, replaced));
         }
 
-        // Wait for all updates to complete
-        try {
-          await Promise.all(updatePromises);
-        } catch (error) {
-          console.error('Error batch updating fields:', error);
+        if (hasReverseGeocodeUsing) {
+          reverseGeocodeUsing(place);
         }
       }
-
-      // Handle the reverseGeocodeUsing callback separately if it exists
-      if (hasReverseGeocodeUsing) {
-        reverseGeocodeUsing(place);
+    },
+    updateLatLng: async function (place) {
+      if (Object.keys(latLngFields).length > 0) {
+        if (place.geometry) {
+          await setStateUsing(
+            latLngFields.lat,
+            place.geometry.location.lat().toString()
+          );
+          await setStateUsing(
+            latLngFields.lng,
+            place.geometry.location.lng().toString()
+          );
+        }
       }
-    }
-  },
-  updateLatLng: async function (place) {
-    if (Object.keys(latLngFields).length > 0 && place.geometry) {
-      const updatePromises = [
-        setStateUsing(latLngFields.lat, place.geometry.location.lat().toFixed(7)),
-        setStateUsing(latLngFields.lng, place.geometry.location.lng().toFixed(7))
-      ];
-
-      try {
-        await Promise.all(updatePromises);
-      } catch (error) {
-        console.error('Error updating lat/lng fields:', error);
-      }
-    }
-  },
+    },
     getReplacements: function (address_components) {
       let replacements = {};
 

@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 /**
  * An example queueable job for running batch geocoding of a table, see ...
  *
- * https://github.com/cheesegrits/filament-google-maps#batch-commands-1
+ * https://github.com/maukoese/filament-google-maps#batch-commands-1
  */
 class GeocodeJob implements ShouldQueue
 {
