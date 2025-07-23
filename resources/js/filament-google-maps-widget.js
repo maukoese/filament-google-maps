@@ -158,7 +158,7 @@ export default function filamentGoogleMapsWidget({
       const point = location.location;
       const label = location.label;
 
-      const marker = new google.maps.marker.AdvancedMarkerElement({
+      const marker = new google.maps.Marker({
         position: point,
         title: label,
         model_id: location.id,
